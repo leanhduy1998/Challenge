@@ -33,9 +33,6 @@ public class MainActivity extends AppCompatActivity {
         String[] skills={"reading","lifting", "running", "badminton", "socializing"};
         ListView newFeedList = (ListView) findViewById(R.id.newFeedList);
 
-        int scrWidth  = getWindowManager().getDefaultDisplay().getWidth();
-        int scrHeight = getWindowManager().getDefaultDisplay().getHeight();
-
 
         ListAdapter adapter= new CustomAdapter(this,skills);
         newFeedList.setAdapter(adapter);

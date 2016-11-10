@@ -29,7 +29,7 @@ public class TakePicture extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.take_picture_fragment);
+        setContentView(R.layout.take_picture);
         takePictureB=(Button) findViewById(R.id.takePicturebutton);
 
         doneButton = (Button) findViewById(R.id.doneButton);
