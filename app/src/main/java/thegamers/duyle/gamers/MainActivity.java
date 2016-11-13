@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        String[] skills={"reading","lifting", "running", "badminton", "socializing"};
+        String[] skills={"reading"};
         ListView newFeedList = (ListView) findViewById(R.id.newFeedList);
 
 

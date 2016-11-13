@@ -1,7 +1,6 @@
 package thegamers.duyle.gamers;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,29 +24,15 @@ public class CustomAdapter extends ArrayAdapter<String> {
         super(context,R.layout.new_feed_row, skills);
     }
 
-
-    @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View newFeedView = inflater.inflate(R.layout.new_feed_row,parent,false);
 
-        bytearrayoutputstream = new ByteArrayOutputStream();
 
         String skillName = getItem(position);
         TextView titleTextView = (TextView) newFeedView.findViewById(R.id.titleTextView);
         titleTextView.setText(skillName);
-
-
-
-        ViewGroup.LayoutParams layout = newFeedView.getLayoutParams();
-        layout.height = newFeedView.getWidth();
-        newFeedView.setLayoutParams(layout);
-
-
-
-
-
 
 
 
@@ -58,9 +43,9 @@ public class CustomAdapter extends ArrayAdapter<String> {
         ImageView imageView4 = (ImageView) newFeedView.findViewById(R.id.imageView4);
        ImageView imageView5 = (ImageView) newFeedView.findViewById(R.id.imageView5);
         GIFView = (ImageView) newFeedView.findViewById(R.id.GIFView);
-        GIFView.setImageResource(R.drawable.c1);
+       // GIFView.setImageResource(R.drawable.c1);
 
-
+        //Drawable drawable1 = newFeedView.getResources().getDrawable(R.drawable.unnamed);
 /*
         drawable1 = newFeedView.getResources().getDrawable(R.drawable.c1);
         //drawable2 = newFeedView.getResources().getDrawable(R.drawable.c2);
@@ -75,12 +60,15 @@ public class CustomAdapter extends ArrayAdapter<String> {
 */
 
 
-        imageView1.setImageResource(R.drawable.c1);
-        imageView2.setImageResource(R.drawable.c2);
-        imageView3.setImageResource(R.drawable.c3);
-        imageView4.setImageResource(R.drawable.c4);
-        imageView5.setImageResource(R.drawable.c5);
+        //Picasso.with(parent.getContext()).load(new File(Environment.getExternalStorageDirectory().toString()+"/camera_app/day1.jpg")).resize(50,50).into(imageView1);
+        //imageView1.setImageDrawable(Drawable.createFromPath(Environment.getExternalStorageDirectory().toString()+"/camera_app/unnamed.png"));
+        imageView2.setImageResource(R.drawable.unnamed);
+        //imageView3.setImageResource(R.drawable.c3);
+        //imageView4.setImageResource(R.drawable.c4);
+        //imageView5.setImageResource(R.drawable.c5);
+        //imageView1.setImageDrawable(drawable1);
 
+        //Picasso.with(parent.getContext()).load(R.drawable.unnamed).resize(25,25).into(imageView1);
 
 
         return newFeedView;

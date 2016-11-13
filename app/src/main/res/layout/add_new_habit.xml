@@ -14,26 +14,35 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/habitTextField"
+            android:id="@+id/habitEditText"
             android:hint="Enter New Habit" />
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            >
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:inputType="time"
                 android:ems="10"
-                android:id="@+id/amountOfDaysTextField"
+                android:id="@+id/amountOfDaysEditText"
                 android:layout_weight="1"
                 android:hint="Amount of Days" />
 
+            <TextView
+                android:text="Duration"
+                android:layout_height="match_parent"
+                android:id="@+id/textView"
+                android:layout_weight="1"
+                android:layout_width="match_parent" />
+
             <Spinner
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:id="@+id/typeOfLengthSpinner" />
         </LinearLayout>
@@ -43,7 +52,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/descriptionTextField"
+            android:id="@+id/descriptionEditText"
             android:hint="Description" />
 
         <LinearLayout
@@ -67,6 +76,12 @@
                 android:layout_weight="1" />
 
         </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:srcCompat="@android:color/background_dark"
+            android:id="@+id/imageView" />
 
         <LinearLayout
             android:orientation="horizontal"
