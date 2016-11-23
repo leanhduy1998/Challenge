@@ -1,6 +1,7 @@
 package thegamers.duyle.gamers.Fragments;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,6 +16,9 @@ import android.widget.ListView;
 import thegamers.duyle.gamers.Activities.MainActivity;
 import thegamers.duyle.gamers.R;
 import android.widget.Toast;
+
+import java.io.File;
+import java.util.ArrayList;
 
 import thegamers.duyle.gamers.Activities.CustomAdapter;
 
@@ -39,20 +43,29 @@ public class NewFeedFragment extends Fragment {
             }
         });
 
-        String[] skills={"reading"};
-        ListView newFeedList = (ListView) view.findViewById(R.id.newFeedList);
-
-
-        ListAdapter adapter= new CustomAdapter(view.getContext(),skills);
-        newFeedList.setAdapter(adapter);
-
-        newFeedList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String skill = String.valueOf(parent.getItemAtPosition(position));
-                Toast.makeText(view.getContext(),skill,Toast.LENGTH_LONG).show();
+        File saveFolder = new File(Environment.getExternalStorageDirectory().toString()+"/camera_app/save/");
+        if(saveFolder.exists()){
+            File[] listFiles = saveFolder.listFiles();
+            ArrayList<String> habits = new ArrayList<String>();
+            for(int i=0;i<listFiles.length;i++){
+                habits.add(listFiles[i].getName());
             }
-        });
+
+            ListView newFeedList = (ListView) view.findViewById(R.id.newFeedList);
+
+
+            ListAdapter adapter= new CustomAdapter(view.getContext(),habits);
+            newFeedList.setAdapter(adapter);
+
+            newFeedList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String skill = String.valueOf(parent.getItemAtPosition(position));
+                    Toast.makeText(view.getContext(),skill,Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+
         return view;
     }
 }

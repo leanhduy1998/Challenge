@@ -133,7 +133,7 @@ public class AddNewHabitFragment extends Fragment {
                                     String outputPath = saveFolder.getAbsolutePath()+"/";
                                     EditFile.moveFile(inputPath,inputFile,outputPath);
                                 }
-
+                            counter=0;
                             //return to new feed fragment
                             MainActivity mainActivity = (MainActivity) getActivity();
                             mainActivity.loadNewFeedFragment();
@@ -212,7 +212,7 @@ public class AddNewHabitFragment extends Fragment {
         return Environment.getExternalStorageDirectory().toString()+"/camera_app/trash/";
     }
     private String getSaveFolder(String folderName){
-        return Environment.getExternalStorageDirectory().toString()+"/camera_app/"+folderName;
+        return Environment.getExternalStorageDirectory().toString()+"/camera_app/save/"+folderName;
     }
 }
 
