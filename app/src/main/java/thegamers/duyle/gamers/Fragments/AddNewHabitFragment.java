@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import thegamers.duyle.gamers.Activities.MainActivity;
 import thegamers.duyle.gamers.Activities.People;
 import thegamers.duyle.gamers.R;
 
@@ -71,16 +72,9 @@ public class AddNewHabitFragment extends Fragment {
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //test
-                habitEditText.setText("Yo");
-                amountOfDaysEditText.setText("Yo");
-                descriptionEditText.setText("Yo");
-
-                //test
-
-
                 if(!(habitEditText.getText().toString().isEmpty())){
                     if(!amountOfDaysEditText.getText().toString().isEmpty()){
+
                         if(!descriptionEditText.getText().toString().isEmpty()){
                             Runnable runnable = new Runnable() {
                                 public void run() {
@@ -93,19 +87,22 @@ public class AddNewHabitFragment extends Fragment {
                                     AmazonDynamoDBClient ddbClient = new AmazonDynamoDBClient(credentialsProvider);
                                     DynamoDBMapper mapper = new DynamoDBMapper(ddbClient);
                                     People people = new People();
-                                    people.setHabitName("Finding One Piece");
-                                    people.setAmountOfDay(30);
-                                    people.setTypeOfLength("Days");
-                                    people.setDescription("Goku is here!");
-                                    people.setPublicity("Public");
+                                    people.setHabitName(habitEditText.getText().toString());
+                                    people.setAmountOfDay(Integer.valueOf(amountOfDaysEditText.getText().toString()));
+                                    people.setTypeOfLength(typeOfLengthSpinner.getSelectedItem().toString());
+                                    people.setDescription(descriptionEditText.getText().toString());
+                                    people.setPublicity(publicitySpinner.getSelectedItem().toString());
 
                                     Calendar c = Calendar.getInstance();
                                     System.out.println("Current time => " + c.getTime());
 
                                     SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+                                    SimpleDateFormat tf = new SimpleDateFormat("hh:mm:ss");
                                     String formattedDate = df.format(c.getTime());
+                                    String formattedTime= tf.format(c.getTime());
 
-                                    people.setAddedTime(formattedDate);
+                                    people.setAddedDate(formattedDate);
+                                    people.setAddedTime(formattedTime);
 
                                     mapper.save(people);
                                 }
@@ -126,7 +123,8 @@ public class AddNewHabitFragment extends Fragment {
                 }
 
 
-
+                MainActivity mainActivity = (MainActivity) getActivity();
+                mainActivity.loadNewFeedFragment();
 
 
             }
@@ -166,13 +164,7 @@ public class AddNewHabitFragment extends Fragment {
         return view;
     }
     private File getFile(){
-        File trashFolder = new File(Environment.getExternalStorageDirectory().toString()+"/camera_app/trash");
-
-        if(!trashFolder.exists()){
-            trashFolder.mkdir();
-        }
-
-
+        File trashFolder = getTrashFolder();
 
         File image_file = new File(trashFolder,day+counter+".jpg");
         if(image_file.exists()){
@@ -182,12 +174,14 @@ public class AddNewHabitFragment extends Fragment {
         counter++;
         return image_file;
     }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //String path="/storage/external_SD/camera_app/"+day+counter+".jpg";
-        //imageView.setImageDrawable(Drawable.createFromPath(path));
+    private File getTrashFolder(){
+        File trashFolder = new File(Environment.getExternalStorageDirectory().toString()+"/camera_app/trash");
+        if(!trashFolder.exists()){
+            trashFolder.mkdir();
+        }
+        return  trashFolder;
     }
+
 }
 
 

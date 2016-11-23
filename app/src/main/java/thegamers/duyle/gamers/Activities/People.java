@@ -14,14 +14,15 @@ public class People {
     private String description;
     private String publicity;
     private String addedTime;
+    private String addedDate;
 
     @DynamoDBRangeKey(attributeName = "addedDate")
-    public String getAddedTime() {
-        return addedTime;
+    public String getAddedDate() {
+        return addedDate;
     }
 
-    public void setAddedTime(String addedTime) {
-        this.addedTime = addedTime;
+    public void setAddedDate(String addedDate) {
+        this.addedDate = addedDate;
     }
 
     @DynamoDBHashKey(attributeName = "habitName")
@@ -40,6 +41,15 @@ public class People {
 
     public void setAmountOfDay(int amountOfDay) {
         this.amountOfDay = amountOfDay;
+    }
+
+    @DynamoDBAttribute(attributeName = "addedTime")
+    public String getAddedTime() {
+        return addedTime;
+    }
+
+    public void setAddedTime(String addedTime) {
+        this.addedTime = addedTime;
     }
 
     @DynamoDBAttribute(attributeName = "typeOfLength")

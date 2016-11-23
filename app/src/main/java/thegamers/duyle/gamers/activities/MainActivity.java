@@ -25,30 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        /*
-        FloatingActionButton addButton = (FloatingActionButton) findViewById(R.id.addNewHabitButton);
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, addNewHabit.class));
-            }
-        });
-
-        String[] skills={"reading"};
-        ListView newFeedList = (ListView) findViewById(R.id.newFeedList);
-
-
-        ListAdapter adapter= new CustomAdapter(this,skills);
-        newFeedList.setAdapter(adapter);
-
-        newFeedList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String skill = String.valueOf(parent.getItemAtPosition(position));
-                Toast.makeText(MainActivity.this,skill,Toast.LENGTH_LONG).show();
-            }
-        });
-*/
         FragmentManager manager = getSupportFragmentManager();
         Fragment fragment = manager.findFragmentById(R.id.fragment_container);
 
