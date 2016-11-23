@@ -18,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
+import com.amazonaws.mobileconnectors.amazonmobileanalytics.internal.core.system.System;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
@@ -29,6 +30,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import thegamers.duyle.gamers.Activities.EditFile;
 import thegamers.duyle.gamers.Activities.MainActivity;
 import thegamers.duyle.gamers.Activities.People;
 import thegamers.duyle.gamers.R;
@@ -46,6 +48,8 @@ public class AddNewHabitFragment extends Fragment {
     EditText habitEditText;
     EditText amountOfDaysEditText;
     EditText descriptionEditText;
+    Button retakePictureButton;
+    Button addMorePictureButton;
 
     static final int CAM_REQUEST=1;
     Button doneButton;
@@ -60,21 +64,24 @@ public class AddNewHabitFragment extends Fragment {
         imageView = (ImageView) view.findViewById(R.id.imageView);
         doneButton = (Button) view.findViewById(R.id.doneButton);
 
+        retakePictureButton = (Button) view.findViewById(R.id.retakePictureButton);
+        addMorePictureButton = (Button) view.findViewById(R.id.addMorePictureButton);
+
         habitEditText=(EditText) view.findViewById(R.id.habitEditText);
         amountOfDaysEditText=(EditText)view.findViewById(R.id.amountOfDaysEditText);
         descriptionEditText=(EditText) view.findViewById(R.id.descriptionEditText);
 
 
-        Picasso.with(view.getContext()).load(new File(Environment.getExternalStorageDirectory().toString()+"/camera_app/day1.jpg")).resize(50,50).into(imageView);
+        retakePictureButton.setVisibility(View.GONE);
+        addMorePictureButton.setVisibility(View.GONE);
 
-        //imageView.setImageDrawable(Drawable.createFromPath("/storage/external_SD/camera_app/day1.jpg"));
+
         //done button
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!(habitEditText.getText().toString().isEmpty())){
                     if(!amountOfDaysEditText.getText().toString().isEmpty()){
-
                         if(!descriptionEditText.getText().toString().isEmpty()){
                             Runnable runnable = new Runnable() {
                                 public void run() {
@@ -94,7 +101,7 @@ public class AddNewHabitFragment extends Fragment {
                                     people.setPublicity(publicitySpinner.getSelectedItem().toString());
 
                                     Calendar c = Calendar.getInstance();
-                                    System.out.println("Current time => " + c.getTime());
+                                    //System.out.println("Current time => " + c.getTime());
 
                                     SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
                                     SimpleDateFormat tf = new SimpleDateFormat("hh:mm:ss");
@@ -109,6 +116,27 @@ public class AddNewHabitFragment extends Fragment {
                             };
                             Thread mythread = new Thread(runnable);
                             mythread.start();
+
+
+
+                            //save
+                                // File[] listFile = getSaveFolder(habitEditText.getText().toString()).listFiles();
+                                File[] trashFolderList = (new File(getTrashFolder())).listFiles();
+                                for(int i=0;i<trashFolderList.length;i++){
+                                    Toast.makeText(getContext(),trashFolderList[i].getAbsolutePath(),Toast.LENGTH_LONG).show();
+                                    File saveFolder = new File(getSaveFolder(habitEditText.getText().toString()));
+                                    if(!saveFolder.exists()){
+                                        saveFolder.mkdir();
+                                    }
+                                    String inputPath=getTrashFolder();
+                                    String inputFile=(trashFolderList[i].getName());
+                                    String outputPath = saveFolder.getAbsolutePath()+"/";
+                                    EditFile.moveFile(inputPath,inputFile,outputPath);
+                                }
+
+                            //return to new feed fragment
+                            MainActivity mainActivity = (MainActivity) getActivity();
+                            mainActivity.loadNewFeedFragment();
                         }
                         else{
                             Toast.makeText(getContext(),"Please fill in the description!",Toast.LENGTH_LONG).show();
@@ -123,12 +151,12 @@ public class AddNewHabitFragment extends Fragment {
                 }
 
 
-                MainActivity mainActivity = (MainActivity) getActivity();
-                mainActivity.loadNewFeedFragment();
 
 
             }
         });
+
+
         //taking picture
         takePictureB.setOnClickListener(new View.OnClickListener(){
 
@@ -138,6 +166,10 @@ public class AddNewHabitFragment extends Fragment {
                 File file = getFile();
                 camera_intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
                 startActivityForResult(camera_intent,CAM_REQUEST);
+                retakePictureButton.setVisibility(View.VISIBLE);
+                addMorePictureButton.setVisibility(View.VISIBLE);
+                takePictureB.setVisibility(View.GONE);
+                Picasso.with(getContext()).load(getTrashFolder()+"/day1.jpg").resize(50,50).into(imageView);
             }
         });
 
@@ -164,8 +196,10 @@ public class AddNewHabitFragment extends Fragment {
         return view;
     }
     private File getFile(){
-        File trashFolder = getTrashFolder();
-
+        File trashFolder = new File(getTrashFolder()) ;
+        if(!trashFolder.exists()){
+            trashFolder.mkdir();
+        }
         File image_file = new File(trashFolder,day+counter+".jpg");
         if(image_file.exists()){
             counter++;
@@ -174,14 +208,12 @@ public class AddNewHabitFragment extends Fragment {
         counter++;
         return image_file;
     }
-    private File getTrashFolder(){
-        File trashFolder = new File(Environment.getExternalStorageDirectory().toString()+"/camera_app/trash");
-        if(!trashFolder.exists()){
-            trashFolder.mkdir();
-        }
-        return  trashFolder;
+    private String getTrashFolder(){
+        return Environment.getExternalStorageDirectory().toString()+"/camera_app/trash/";
     }
-
+    private String getSaveFolder(String folderName){
+        return Environment.getExternalStorageDirectory().toString()+"/camera_app/"+folderName;
+    }
 }
 
 

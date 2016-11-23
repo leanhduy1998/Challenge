@@ -14,7 +14,7 @@ import java.io.OutputStream;
  */
 
 public class EditFile {
-    private void moveFile(String inputPath, String inputFile, String outputPath) {
+    public static void moveFile(String inputPath, String inputFile, String outputPath) {
 
         InputStream in = null;
         OutputStream out = null;
@@ -53,7 +53,7 @@ public class EditFile {
             Log.e("tag", e.getMessage());
         }
     }
-    private void deleteFile(String inputPath, String inputFile) {
+    public static void deleteFile(String inputPath, String inputFile) {
         try {
             // delete the original file
             new File(inputPath + inputFile).delete();
@@ -63,7 +63,7 @@ public class EditFile {
             Log.e("tag", e.getMessage());
         }
     }
-    private void copyFile(String inputPath, String inputFile, String outputPath) {
+    public static void copyFile(String inputPath, String inputFile, String outputPath) {
 
         InputStream in = null;
         OutputStream out = null;
