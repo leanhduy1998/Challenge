@@ -1,6 +1,7 @@
-package thegamers.duyle.gamers;
+package thegamers.duyle.gamers.Activities;
 
 import android.content.Context;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,7 +9,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+
+import thegamers.duyle.gamers.R;
 
 /**
  * Created by Duy Le on 11/3/2016.
@@ -21,7 +27,7 @@ public class CustomAdapter extends ArrayAdapter<String> {
     byte[] BYTE;
 
     public CustomAdapter(Context context, String[] skills) {
-        super(context,R.layout.new_feed_row, skills);
+        super(context, R.layout.new_feed_row, skills);
     }
 
     @Override
@@ -60,13 +66,9 @@ public class CustomAdapter extends ArrayAdapter<String> {
 */
 
 
-        //Picasso.with(parent.getContext()).load(new File(Environment.getExternalStorageDirectory().toString()+"/camera_app/day1.jpg")).resize(50,50).into(imageView1);
+        Picasso.with(parent.getContext()).load(new File(Environment.getExternalStorageDirectory().toString()+"/camera_app/day1.jpg")).resize(50,50).into(imageView1);
         //imageView1.setImageDrawable(Drawable.createFromPath(Environment.getExternalStorageDirectory().toString()+"/camera_app/unnamed.png"));
-        imageView2.setImageResource(R.drawable.unnamed);
-        //imageView3.setImageResource(R.drawable.c3);
-        //imageView4.setImageResource(R.drawable.c4);
-        //imageView5.setImageResource(R.drawable.c5);
-        //imageView1.setImageDrawable(drawable1);
+
 
         //Picasso.with(parent.getContext()).load(R.drawable.unnamed).resize(25,25).into(imageView1);
 

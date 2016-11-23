@@ -1,17 +1,19 @@
-package thegamers.duyle.gamers;
+package thegamers.duyle.gamers.Activities;
 
-import android.content.Intent;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
+
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
+
+import thegamers.duyle.gamers.Fragments.AddNewHabitFragment;
+import thegamers.duyle.gamers.Fragments.NewFeedFragment;
+import thegamers.duyle.gamers.R;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -20,9 +22,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        /*
         FloatingActionButton addButton = (FloatingActionButton) findViewById(R.id.addNewHabitButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,11 +48,16 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,skill,Toast.LENGTH_LONG).show();
             }
         });
+*/
+        FragmentManager manager = getSupportFragmentManager();
+        Fragment fragment = manager.findFragmentById(R.id.fragment_container);
 
-
-
-
-
+        if(fragment==null){
+            fragment=new NewFeedFragment();
+            FragmentTransaction transaction= manager.beginTransaction();
+            transaction.add(R.id.fragment_container,fragment);
+            transaction.commit();
+        }
 
     }
 
@@ -75,5 +83,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void loadAddHabitFragment(){
+        Fragment addHabitFragment = new AddNewHabitFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,addHabitFragment).addToBackStack(null).commit();
+    }
+    public void loadNewFeedFragment(){
+        Fragment loadNewFeedFragment = new NewFeedFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,loadNewFeedFragment).addToBackStack(null).commit();
     }
 }
