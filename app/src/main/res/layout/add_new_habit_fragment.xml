@@ -143,7 +143,7 @@
         android:layout_marginRight="16dp" />
 
     <TextView
-        android:text="TextView"
+        android:text="Type of Length"
         android:id="@+id/textView"
         android:textSize="18sp"
         android:layout_marginTop="8dp"
@@ -155,7 +155,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_width="0dp"
-        android:layout_height="40dp" />
+        android:layout_height="40dp"
+        android:textColor="@android:color/black" />
 
 
 </android.support.constraint.ConstraintLayout>

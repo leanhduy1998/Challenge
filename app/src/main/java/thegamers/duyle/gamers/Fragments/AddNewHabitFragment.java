@@ -69,7 +69,7 @@ public class AddNewHabitFragment extends Fragment {
                 if(!(habitEditText.getText().toString().isEmpty())){
                     if(!amountOfDaysEditText.getText().toString().isEmpty()){
                         if(!descriptionEditText.getText().toString().isEmpty()){
-                            //startActivity(new Intent(addNewHabit.this, MainActivity.class));
+                            
                         }
                         else{
                             Toast.makeText(getContext(),"Please fill in the description!",Toast.LENGTH_LONG).show();
@@ -124,18 +124,18 @@ public class AddNewHabitFragment extends Fragment {
         return view;
     }
     private File getFile(){
-        File folder = new File(Environment.getExternalStorageDirectory().toString()+"/camera_app");
+        File trashFolder = new File(Environment.getExternalStorageDirectory().toString()+"/camera_app/trash");
 
-        if(!folder.exists()){
-            folder.mkdir();
+        if(!trashFolder.exists()){
+            trashFolder.mkdir();
         }
 
 
 
-        File image_file = new File(folder,day+counter+".jpg");
+        File image_file = new File(trashFolder,day+counter+".jpg");
         if(image_file.exists()){
             counter++;
-            image_file = new File(folder,day+counter+".jpg");
+            image_file = new File(trashFolder,day+counter+".jpg");
         }
         counter++;
         return image_file;
