@@ -17,12 +17,19 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.amazonaws.auth.CognitoCachingCredentialsProvider;
+import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
+import thegamers.duyle.gamers.Activities.People;
 import thegamers.duyle.gamers.R;
 
 
@@ -64,12 +71,47 @@ public class AddNewHabitFragment extends Fragment {
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //test
+                habitEditText.setText("Yo");
+                amountOfDaysEditText.setText("Yo");
+                descriptionEditText.setText("Yo");
 
-                boolean passCondition=false;
+                //test
+
+
                 if(!(habitEditText.getText().toString().isEmpty())){
                     if(!amountOfDaysEditText.getText().toString().isEmpty()){
                         if(!descriptionEditText.getText().toString().isEmpty()){
-                            
+                            Runnable runnable = new Runnable() {
+                                public void run() {
+                                    //DynamoDB calls go here
+                                    CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
+                                            getContext(), // Context
+                                            "us-east-1:0c67b780-c220-47d9-b361-fb192062f8a7", // Identity Pool ID
+                                            Regions.US_EAST_1 // Region
+                                    );
+                                    AmazonDynamoDBClient ddbClient = new AmazonDynamoDBClient(credentialsProvider);
+                                    DynamoDBMapper mapper = new DynamoDBMapper(ddbClient);
+                                    People people = new People();
+                                    people.setHabitName("Finding One Piece");
+                                    people.setAmountOfDay(30);
+                                    people.setTypeOfLength("Days");
+                                    people.setDescription("Goku is here!");
+                                    people.setPublicity("Public");
+
+                                    Calendar c = Calendar.getInstance();
+                                    System.out.println("Current time => " + c.getTime());
+
+                                    SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+                                    String formattedDate = df.format(c.getTime());
+
+                                    people.setAddedTime(formattedDate);
+
+                                    mapper.save(people);
+                                }
+                            };
+                            Thread mythread = new Thread(runnable);
+                            mythread.start();
                         }
                         else{
                             Toast.makeText(getContext(),"Please fill in the description!",Toast.LENGTH_LONG).show();
