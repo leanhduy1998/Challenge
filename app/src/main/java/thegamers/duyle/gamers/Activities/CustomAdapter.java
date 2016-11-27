@@ -27,12 +27,12 @@ import thegamers.duyle.gamers.R;
  */
 
 public class CustomAdapter extends ArrayAdapter<String> {
-    ImageView GIFView;
-    ImageView imageView1;
-    ImageView imageView2;
-    ImageView imageView3;
-    ImageView imageView4;
-    ImageView imageView5;
+    private ImageView GIFView;
+    private ImageView imageView1;
+    private ImageView imageView2;
+    private ImageView imageView3;
+    private ImageView imageView4;
+    private ImageView imageView5;
 
 
     ByteArrayOutputStream bytearrayoutputstream;

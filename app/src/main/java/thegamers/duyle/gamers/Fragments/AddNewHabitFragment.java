@@ -47,18 +47,18 @@ import thegamers.duyle.gamers.R;
  */
 
 public class AddNewHabitFragment extends Fragment {
-    Button takePictureB;
-    ImageView imageView;
-    Spinner typeOfLengthSpinner;
-    Spinner publicitySpinner;
-    EditText habitEditText;
-    EditText amountOfDaysEditText;
-    EditText descriptionEditText;
-    Button retakePictureButton;
-    Button addMorePictureButton;
+    private Button takePictureB;
+    private ImageView imageView;
+    private Spinner typeOfLengthSpinner;
+    private Spinner publicitySpinner;
+    private EditText habitEditText;
+    private EditText amountOfDaysEditText;
+    private EditText descriptionEditText;
+    private Button retakePictureButton;
+    private Button addMorePictureButton;
 
-    static final int CAM_REQUEST=1;
-    Button doneButton;
+    private static final int CAM_REQUEST=1;
+    private Button doneButton;
     private static String day="day";
     private static int counter=1;
 
