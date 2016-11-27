@@ -8,6 +8,14 @@
     tools:context="thegamers.duyle.gamers.Activities.MainActivity">
 
 
+    <TextView
+        android:text="TextView"
+        android:layout_width="332dp"
+        android:layout_height="393dp"
+        android:id="@+id/testView"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp" />
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_height="56dp"

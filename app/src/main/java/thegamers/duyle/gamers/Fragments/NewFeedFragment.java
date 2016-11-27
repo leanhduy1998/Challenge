@@ -68,4 +68,10 @@ public class NewFeedFragment extends Fragment {
 
         return view;
     }
+
+    @Nullable
+    @Override
+    public View getView() {
+        return super.getView();
+    }
 }

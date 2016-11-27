@@ -5,8 +5,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
@@ -23,6 +27,8 @@ import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.squareup.picasso.Picasso;
+
+import org.w3c.dom.Text;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -60,6 +66,16 @@ public class AddNewHabitFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.add_new_habit_fragment,container,false);
+
+        CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
+                getContext(), // Context
+                "us-east-1:0c67b780-c220-47d9-b361-fb192062f8a7", // Identity Pool ID
+                Regions.US_EAST_1 // Region
+        );
+        AmazonDynamoDBClient ddbClient = new AmazonDynamoDBClient(credentialsProvider);
+        final DynamoDBMapper mapper = new DynamoDBMapper(ddbClient);
+
+
         takePictureB=(Button) view.findViewById(R.id.takePicturebutton);
         imageView = (ImageView) view.findViewById(R.id.imageView);
         doneButton = (Button) view.findViewById(R.id.doneButton);
@@ -75,6 +91,27 @@ public class AddNewHabitFragment extends Fragment {
         retakePictureButton.setVisibility(View.GONE);
         addMorePictureButton.setVisibility(View.GONE);
 
+        habitEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                //People selectedPeople = mapper.load(People.class, "habit1");
+                //Toast.makeText(getContext(),"LOLO",Toast.LENGTH_LONG).show();
+                descriptionEditText.setText("YAYA");
+                amountOfDaysEditText.setText("12");
+            }
+        });
+
+
 
         //done button
         doneButton.setOnClickListener(new View.OnClickListener() {
@@ -86,30 +123,24 @@ public class AddNewHabitFragment extends Fragment {
                             Runnable runnable = new Runnable() {
                                 public void run() {
                                     //DynamoDB calls go here
-                                    CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
-                                            getContext(), // Context
-                                            "us-east-1:0c67b780-c220-47d9-b361-fb192062f8a7", // Identity Pool ID
-                                            Regions.US_EAST_1 // Region
-                                    );
-                                    AmazonDynamoDBClient ddbClient = new AmazonDynamoDBClient(credentialsProvider);
-                                    DynamoDBMapper mapper = new DynamoDBMapper(ddbClient);
+
                                     People people = new People();
+                                    people.setUsername("admin");
+
+                                    Calendar c = Calendar.getInstance();
+
+                                    //SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy hh:mm:ss a");
+                                    //String formattedDate = df.format(c.getTime());
+
+                                    people.setAddedTime(c.getTimeInMillis());
+
                                     people.setHabitName(habitEditText.getText().toString());
                                     people.setAmountOfDay(Integer.valueOf(amountOfDaysEditText.getText().toString()));
                                     people.setTypeOfLength(typeOfLengthSpinner.getSelectedItem().toString());
                                     people.setDescription(descriptionEditText.getText().toString());
                                     people.setPublicity(publicitySpinner.getSelectedItem().toString());
 
-                                    Calendar c = Calendar.getInstance();
-                                    //System.out.println("Current time => " + c.getTime());
 
-                                    SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
-                                    SimpleDateFormat tf = new SimpleDateFormat("hh:mm:ss");
-                                    String formattedDate = df.format(c.getTime());
-                                    String formattedTime= tf.format(c.getTime());
-
-                                    people.setAddedDate(formattedDate);
-                                    people.setAddedTime(formattedTime);
 
                                     mapper.save(people);
                                 }
@@ -200,7 +231,11 @@ public class AddNewHabitFragment extends Fragment {
         if(!trashFolder.exists()){
             trashFolder.mkdir();
         }
+        File saveFolder = new File(Environment.getExternalStorageDirectory().toString()+"/camera_app/save/");
+        File[] listFolders = saveFolder.listFiles();
+
         File image_file = new File(trashFolder,day+counter+".jpg");
+
         if(image_file.exists()){
             counter++;
             image_file = new File(trashFolder,day+counter+".jpg");

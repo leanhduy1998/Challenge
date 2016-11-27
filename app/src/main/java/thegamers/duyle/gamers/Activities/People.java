@@ -9,23 +9,34 @@ import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.*;
 @DynamoDBTable(tableName = "FeedData")
 public class People {
     private String habitName;
+    private String username;
     private int amountOfDay;
     private String typeOfLength;
     private String description;
     private String publicity;
-    private String addedTime;
-    private String addedDate;
+    private Long addedTime;
 
-    @DynamoDBRangeKey(attributeName = "addedDate")
-    public String getAddedDate() {
-        return addedDate;
+
+    @DynamoDBHashKey(attributeName = "username")
+    public String getUsername() {
+        return username;
     }
 
-    public void setAddedDate(String addedDate) {
-        this.addedDate = addedDate;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    @DynamoDBHashKey(attributeName = "habitName")
+
+    @DynamoDBRangeKey(attributeName = "addedTime")
+    public Long getAddedTime() {
+        return addedTime;
+    }
+
+    public void setAddedTime(Long addedTime) {
+        this.addedTime = addedTime;
+    }
+
+    @DynamoDBIndexHashKey(attributeName = "habitName")
     public String getHabitName() {
         return habitName;
     }
@@ -33,6 +44,8 @@ public class People {
     public void setHabitName(String habitName) {
         this.habitName = habitName;
     }
+
+
 
     @DynamoDBAttribute(attributeName = "amountOfDay")
     public int getAmountOfDay() {
@@ -43,14 +56,6 @@ public class People {
         this.amountOfDay = amountOfDay;
     }
 
-    @DynamoDBAttribute(attributeName = "addedTime")
-    public String getAddedTime() {
-        return addedTime;
-    }
-
-    public void setAddedTime(String addedTime) {
-        this.addedTime = addedTime;
-    }
 
     @DynamoDBAttribute(attributeName = "typeOfLength")
     public String getTypeOfLength() {
