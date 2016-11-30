@@ -1,32 +1,27 @@
-package thegamers.duyle.gamers.Activities;
+package thegamers.duyle.gamers.adapters;
 
-import android.content.Context;
-import android.os.Environment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.amazonaws.auth.CognitoCachingCredentialsProvider;
-import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
-import com.amazonaws.regions.Regions;
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
-import com.squareup.picasso.Picasso;
-
-import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.util.ArrayList;
 
 import thegamers.duyle.gamers.R;
+import thegamers.duyle.gamers.holders.FeedViewHolder;
+import thegamers.duyle.gamers.models.Feed;
 
 /**
  * Created by Duy Le on 11/3/2016.
  */
 
-public class CustomAdapter extends ArrayAdapter<String> {
+public class NewFeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
+    public NewFeedAdapter(ArrayList<Feed> habits) {
+        this.habits = habits;
+    }
+
+    private ArrayList<Feed> habits;
     private ImageView GIFView;
     private ImageView imageView1;
     private ImageView imageView2;
@@ -34,10 +29,7 @@ public class CustomAdapter extends ArrayAdapter<String> {
     private ImageView imageView4;
     private ImageView imageView5;
 
-
-    ByteArrayOutputStream bytearrayoutputstream;
-    byte[] BYTE;
-
+/*
     public CustomAdapter(Context context, ArrayList habits) {
         super(context, R.layout.new_feed_row, habits);
     }
@@ -75,17 +67,27 @@ public class CustomAdapter extends ArrayAdapter<String> {
             }
         }
 
-
-
-
-
-
-
         //Picasso.with(parent.getContext()).load(R.drawable.unnamed).resize(25,25).into(imageView1);
 
 
         return newFeedView;
     }
+*/
 
+    @Override
+    public FeedViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View feedCard = LayoutInflater.from(parent.getContext()).inflate(R.layout.feed_card, parent, false);
+        return new FeedViewHolder(feedCard);
+    }
 
+    @Override
+    public void onBindViewHolder(FeedViewHolder holder, int position) {
+        final Feed feed = habits.get(position);
+        holder.updateUI(feed);
+    }
+
+    @Override
+    public int getItemCount() {
+        return habits.size();
+    }
 }

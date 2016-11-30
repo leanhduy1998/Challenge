@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -18,27 +17,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
-import com.amazonaws.mobileconnectors.amazonmobileanalytics.internal.core.system.System;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
-
 import java.io.File;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import thegamers.duyle.gamers.Activities.EditFile;
+import thegamers.duyle.gamers.models.Feed;
 import thegamers.duyle.gamers.Activities.MainActivity;
-import thegamers.duyle.gamers.Activities.People;
 import thegamers.duyle.gamers.R;
 
 
@@ -119,56 +113,58 @@ public class AddNewHabitFragment extends Fragment {
             public void onClick(View v) {
                 if(!(habitEditText.getText().toString().isEmpty())){
                     if(!amountOfDaysEditText.getText().toString().isEmpty()){
-                        if(!descriptionEditText.getText().toString().isEmpty()){
-                            Runnable runnable = new Runnable() {
-                                public void run() {
-                                    //DynamoDB calls go here
+                            if(!descriptionEditText.getText().toString().isEmpty()){
+                                //Dynamo things  (not finished right now)
+                                /*
+                                Runnable runnable = new Runnable() {
+                                    public void run() {
+                                        //DynamoDB calls go here
 
-                                    People people = new People();
-                                    people.setUsername("admin");
+                                        People people = new People();
+                                        people.setUsername("admin");
 
-                                    Calendar c = Calendar.getInstance();
+                                        Calendar c = Calendar.getInstance();
 
-                                    //SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy hh:mm:ss a");
-                                    //String formattedDate = df.format(c.getTime());
+                                        //SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy hh:mm:ss a");
+                                        //String formattedDate = df.format(c.getTime());
 
-                                    people.setAddedTime(c.getTimeInMillis());
+                                        people.setAddedTime(c.getTimeInMillis());
 
-                                    people.setHabitName(habitEditText.getText().toString());
-                                    people.setAmountOfDay(Integer.valueOf(amountOfDaysEditText.getText().toString()));
-                                    people.setTypeOfLength(typeOfLengthSpinner.getSelectedItem().toString());
-                                    people.setDescription(descriptionEditText.getText().toString());
-                                    people.setPublicity(publicitySpinner.getSelectedItem().toString());
-
-
-
-                                    mapper.save(people);
-                                }
-                            };
-                            Thread mythread = new Thread(runnable);
-                            mythread.start();
+                                        people.setHabitName(habitEditText.getText().toString());
+                                        people.setAmountOfDay(Integer.valueOf(amountOfDaysEditText.getText().toString()));
+                                        people.setTypeOfLength(typeOfLengthSpinner.getSelectedItem().toString());
+                                        people.setDescription(descriptionEditText.getText().toString());
+                                        people.setPublicity(publicitySpinner.getSelectedItem().toString());
 
 
 
-                            //save
-                                // File[] listFile = getSaveFolder(habitEditText.getText().toString()).listFiles();
-                                File[] trashFolderList = (new File(getTrashFolder())).listFiles();
-                                for(int i=0;i<trashFolderList.length;i++){
-                                    Toast.makeText(getContext(),trashFolderList[i].getAbsolutePath(),Toast.LENGTH_LONG).show();
-                                    File saveFolder = new File(getSaveFolder(habitEditText.getText().toString()));
-                                    if(!saveFolder.exists()){
-                                        saveFolder.mkdir();
+                                        mapper.save(people);
                                     }
-                                    String inputPath=getTrashFolder();
-                                    String inputFile=(trashFolderList[i].getName());
-                                    String outputPath = saveFolder.getAbsolutePath()+"/";
-                                    EditFile.moveFile(inputPath,inputFile,outputPath);
-                                }
-                            counter=0;
-                            //return to new feed fragment
-                            MainActivity mainActivity = (MainActivity) getActivity();
-                            mainActivity.loadNewFeedFragment();
-                        }
+                                };
+                                Thread mythread = new Thread(runnable);
+                                mythread.start();
+    */
+
+
+                                //save
+                                    // File[] listFile = getSaveFolder(habitEditText.getText().toString()).listFiles();
+                                    File[] trashFolderList = (new File(getTrashFolder())).listFiles();
+                                    for(int i=0;i<trashFolderList.length;i++){
+                                        Toast.makeText(getContext(),trashFolderList[i].getAbsolutePath(),Toast.LENGTH_LONG).show();
+                                        Calendar c = Calendar.getInstance();
+                                        Feed feed = new Feed(habitEditText.getText().toString(),Integer.valueOf(amountOfDaysEditText.getText().toString()),typeOfLengthSpinner.getSelectedItem().toString()
+                                                ,descriptionEditText.toString(),publicitySpinner.getSelectedItem().toString()
+                                                ,c.getTimeInMillis());
+                                        String inputPath=getTrashFolder();
+                                        String inputFile=(trashFolderList[i].getName());
+                                        String outputPath = feed.getHabitPath();
+                                        EditFile.moveFile(inputPath,inputFile,outputPath);
+                                    }
+                                counter=0;
+                                //return to new feed fragment
+                                MainActivity mainActivity = (MainActivity) getActivity();
+                                mainActivity.loadNewFeedFragment();
+                            }
                         else{
                             Toast.makeText(getContext(),"Please fill in the description!",Toast.LENGTH_LONG).show();
                         }
