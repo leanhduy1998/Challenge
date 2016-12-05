@@ -66,13 +66,16 @@ public class NewFeedFragment extends Fragment {
         newFeedRecyclerView.setHasFixedSize(true);
         newFeedRecyclerView.addItemDecoration(new HorizontalSpaceItemDecorator(30));
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        layoutManager.setOrientation(LinearLayout.HORIZONTAL);
+        LinearLayoutManager verticalLayoutManager = new LinearLayoutManager(getContext());
+        verticalLayoutManager.setOrientation(LinearLayout.VERTICAL);
 
-        newFeedRecyclerView.setLayoutManager(layoutManager);
+        newFeedRecyclerView.setLayoutManager(verticalLayoutManager);
 
         NewFeedAdapter adapter = new NewFeedAdapter(DataService.getInstance().getFeed());
         newFeedRecyclerView.setAdapter(adapter);
+
+
+
 
         return view;
     }

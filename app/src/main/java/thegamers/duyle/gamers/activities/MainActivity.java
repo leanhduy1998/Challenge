@@ -36,18 +36,29 @@ import java.util.HashMap;
 
 import thegamers.duyle.gamers.Fragments.AddNewHabitFragment;
 import thegamers.duyle.gamers.Fragments.NewFeedFragment;
+import thegamers.duyle.gamers.Fragments.NewFeedRowFragment;
 import thegamers.duyle.gamers.R;
 
 
 public class MainActivity extends AppCompatActivity {
 
     public static  People people=new People();
+    private static MainActivity mainActivity;
+
+    public static MainActivity getMainActivity() {
+        return mainActivity;
+    }
+
+    private static void setMainActivity(MainActivity mainActivity) {
+        MainActivity.mainActivity = mainActivity;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        MainActivity.setMainActivity(this);
 
         //Toast.makeText(getBaseContext(),selectedPeople.toString(),Toast.LENGTH_LONG).show();
 
@@ -144,6 +155,10 @@ public class MainActivity extends AppCompatActivity {
     public void loadNewFeedFragment(){
         Fragment loadNewFeedFragment = new NewFeedFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,loadNewFeedFragment).addToBackStack(null).commit();
+    }
+    public void loadFeedRowFragment(){
+        Fragment loadFeedRowFragment = new NewFeedRowFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.horizontalFeedFragmentContainter,loadFeedRowFragment).addToBackStack(null).commit();
     }
 
     public void setResult(People people){

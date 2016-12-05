@@ -1,27 +1,31 @@
 package thegamers.duyle.gamers.adapters;
 
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
 import thegamers.duyle.gamers.R;
-import thegamers.duyle.gamers.holders.FeedViewHolder;
+import thegamers.duyle.gamers.holders.RowFeedViewHolder;
 import thegamers.duyle.gamers.models.Feed;
+import thegamers.duyle.gamers.models.RowFeed;
+import thegamers.duyle.gamers.services.DataService;
 
 /**
  * Created by Duy Le on 11/3/2016.
  */
 
-public class NewFeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
-    public NewFeedAdapter(ArrayList<Feed> habits) {
+public class NewFeedAdapter extends RecyclerView.Adapter<RowFeedViewHolder> {
+    public NewFeedAdapter(ArrayList<RowFeed> habits) {
         this.habits = habits;
     }
 
-    private ArrayList<Feed> habits;
+    private ArrayList<RowFeed> habits;
     private ImageView GIFView;
     private ImageView imageView1;
     private ImageView imageView2;
@@ -75,15 +79,28 @@ public class NewFeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
 */
 
     @Override
-    public FeedViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RowFeedViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View feedCard = LayoutInflater.from(parent.getContext()).inflate(R.layout.feed_card, parent, false);
-        return new FeedViewHolder(feedCard);
+        RecyclerView testRecyclerView = (RecyclerView) feedCard.findViewById(R.id.testRecyclerView);
+        testRecyclerView.setHasFixedSize(true);
+        //testRecyclerView.addItemDecoration(new HorizontalSpaceItemDecorator(30));
+
+        LinearLayoutManager testLayoutManager = new LinearLayoutManager(feedCard.getContext());
+        testLayoutManager.setOrientation(LinearLayout.HORIZONTAL);
+
+        testRecyclerView.setLayoutManager(testLayoutManager);
+
+
+
+
+        return new RowFeedViewHolder(feedCard);
     }
 
     @Override
-    public void onBindViewHolder(FeedViewHolder holder, int position) {
-        final Feed feed = habits.get(position);
+    public void onBindViewHolder(RowFeedViewHolder holder, int position) {
+        final RowFeed feed = habits.get(position);
         holder.updateUI(feed);
+
     }
 
     @Override

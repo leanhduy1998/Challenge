@@ -34,6 +34,7 @@ import thegamers.duyle.gamers.Activities.EditFile;
 import thegamers.duyle.gamers.models.Feed;
 import thegamers.duyle.gamers.Activities.MainActivity;
 import thegamers.duyle.gamers.R;
+import thegamers.duyle.gamers.models.RowFeed;
 
 
 /**
@@ -152,7 +153,7 @@ public class AddNewHabitFragment extends Fragment {
                                     for(int i=0;i<trashFolderList.length;i++){
                                         Toast.makeText(getContext(),trashFolderList[i].getAbsolutePath(),Toast.LENGTH_LONG).show();
                                         Calendar c = Calendar.getInstance();
-                                        Feed feed = new Feed(habitEditText.getText().toString(),Integer.valueOf(amountOfDaysEditText.getText().toString()),typeOfLengthSpinner.getSelectedItem().toString()
+                                        RowFeed feed = new RowFeed(habitEditText.getText().toString(),Integer.valueOf(amountOfDaysEditText.getText().toString()),typeOfLengthSpinner.getSelectedItem().toString()
                                                 ,descriptionEditText.toString(),publicitySpinner.getSelectedItem().toString()
                                                 ,c.getTimeInMillis());
                                         String inputPath=getTrashFolder();
