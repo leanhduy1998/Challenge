@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">Habits</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="resToastText">YOOOOOOOO!</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="register_required">Did you register?</string>
+    <string name="wrong_password">Your password is incorrect</string>
+
+    <!-- Strings related to main menu -->
+    <string name="fill_in_user_info">Please fill in user info</string>
+
+
+    <!-- Strings related to main menu -->
+    <string name="action_logout">Logout</string>
+    <string name="app_label">Challenger</string>
+    <string name="search_hint">Search for people</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_show_profile">Your profile</string>
+    <string name="drawer_open">Drawer Open</string>
+    <string name="drawer_close">Drawer Close</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_test_drawer">TestDrawer</string>
+
+    <!-- Strings related to category -->
+    <string name="edit_category">Edit your category</string>
+    <string name="three_dots">...</string>
+
+    <!--relate to wifi -->
+    <string name="wifi_required">Wifi is not available. Please turn it on!</string>
+</resources>

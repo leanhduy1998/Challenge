@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "719762672219",
+    "firebase_url": "https://habit-aa00d.firebaseio.com",
+    "project_id": "habit-aa00d",
+    "storage_bucket": "habit-aa00d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719762672219:android:5684f3fc75816492",
+        "android_client_info": {
+          "package_name": "habit.duyle.habit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "719762672219-sperc33a7v9p5g8cf9gd2mrp3aka36m7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZjcgA9hw6xFTVKaLWIkZyz8wcfpWSOCY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

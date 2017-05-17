@@ -1,0 +1,209 @@
+[33mcommit b7ff79924530eb8ce4ebf59e280187f5e231fbd1[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Fri Dec 16 19:06:46 2016 -0500
+
+    ERROR
+
+[33mcommit fa5b9efaf7f687b4d00d886a65c6962e1d551892[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Thu Dec 15 04:49:03 2016 -0500
+
+    error
+
+[33mcommit 8250f4f3ffb5576be1138e50f260c3e7995bc881[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Wed Dec 14 21:43:01 2016 -0500
+
+    able to download thumbnail from database
+
+[33mcommit 045b13de30a35f3b72ce693a7228a6fde9b5c1f5[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Mon Dec 12 13:30:55 2016 -0500
+
+    able to retrieve data from firebase database
+
+[33mcommit 166f3710b999c2fa8bed53ec2b51eba7cfd418c0[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Sat Dec 10 18:03:39 2016 -0500
+
+    able to upload to database and storage of firebase. Yay!
+
+[33mcommit a0255a26a3b0b9b742e50dd2612a2031a69c8a39[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Sat Dec 10 01:03:11 2016 -0500
+
+    can use firebase database and auth
+
+[33mcommit 3702129cfae6f4cd4954f060089953fe0ca29607[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Tue Dec 6 17:41:58 2016 -0500
+
+    finish update the basic of nested recyclerview
+
+[33mcommit 00238c6a71b9ac2719466fe9712305a217926330[m
+Merge: 9a87564 459dcab
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Tue Dec 6 16:40:01 2016 -0500
+
+    Merge branch 'master' of github.com:leanhduy1998/Habit
+
+[33mcommit 9a87564e21ba625382ca8899b26c2499ff5be040[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Tue Dec 6 16:36:42 2016 -0500
+
+    mess with git
+
+[33mcommit 335ab4a6205db78349236b752655b155dbc70d90[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Tue Dec 6 16:08:58 2016 -0500
+
+    able to make nested recyclerview! Just the really basic
+
+[33mcommit 856eaa9986b986f3f4fc5f174f044f3165511bc9[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Wed Nov 30 13:59:38 2016 -0500
+
+    updating ListView to RecyclerView (testing, don't use this )
+
+[33mcommit 3d8d4026a9c9a71a21ea1146a417a8648370b701[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Sun Nov 27 18:42:36 2016 -0500
+
+    encapsulate most files
+
+[33mcommit 5229c7992ab96084234ae97bf54230d6b63ebbaf[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Sun Nov 27 17:31:39 2016 -0500
+
+    able to save, but not load in dynamodb
+
+[33mcommit af48bf72c359db89b163d37898a36dcfc1584ff2[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Wed Nov 23 16:50:57 2016 -0500
+
+    update NewFeedFragment so that new_feed_fragment will show every habit that the user make
+
+[33mcommit 1ae24f7778603c618512b5d8df50c5565e9bfcb3[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Wed Nov 23 08:35:55 2016 -0500
+
+    able to save image
+
+[33mcommit 98687864fca5391fe8e57e36c41b61f6a4947105[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Wed Nov 23 06:43:17 2016 -0500
+
+    update add_new_habit_fragment UI
+
+[33mcommit 514db5e94dd5c7e34a848308dc17cd894ed69c43[m
+Merge: a6368e6 9d2fb8e
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Wed Nov 23 05:48:18 2016 -0500
+
+    Fix merge error
+
+[33mcommit a6368e65d65095ce36ffb1cc39be941ddd26a15b[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Wed Nov 23 05:44:36 2016 -0500
+
+    allowed internet access, created People class, make Dynamodb avaliable to save
+
+[33mcommit f34de071668cee9068443007d4d2abfd952764fb[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Wed Nov 23 00:03:57 2016 -0500
+
+    added EditFile class, update UI
+
+[33mcommit a7e9d7d0ed9c4165f74d4d5f34383b0d841c6425[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Tue Nov 22 23:38:45 2016 -0500
+
+    save for picking a file from the last save
+
+[33mcommit 9d2fb8e71dc0b823894179a8f38161a65e8554ec[m
+Author: KUMAR\Subramanian <k678kk@gmail.com>
+Date:   Mon Nov 21 15:06:19 2016 -0500
+
+    added again by Kumar
+
+[33mcommit 9106cd9503c0f79b700ccfa9bd8cc70d66f65bd3[m
+Author: Subramanian Prasanna Kumar <Subramanian Prasanna Kumar>
+Date:   Sat Nov 19 23:55:09 2016 -0500
+
+    first commit
+
+[33mcommit 459dcabd7b13ddad1f71bfcde826ab637aa78227[m
+Merge: ebdadaf bd27c6f
+Author: Le Anh Duy (Andrew) <leanhduy1998@yahoo.com>
+Date:   Sat Nov 19 23:01:56 2016 -0500
+
+    Merge pull request #1 from leanhduy1998/noobBranch
+    
+    Noob branch
+
+[33mcommit bd27c6fee1156d8d84edd4edcf44b8e569bc5b83[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Sun Nov 13 17:42:44 2016 -0500
+
+    doesn't work on real device, revert back to check
+
+[33mcommit 71abf962882fb6c9a78b508a1b9845ecb31d272d[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Thu Nov 10 17:32:13 2016 -0500
+
+    fix crappy code
+
+[33mcommit 5d6494c7546b43d84086613c7d24d963c6c5d1c0[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Thu Nov 10 17:11:38 2016 -0500
+
+    add addExistingHabit button to main xml
+
+[33mcommit ebdadafee69d200ba4fc79776dd3c2256cc85a44[m
+Author: Le Anh Duy (Andrew) <leanhduy1998@yahoo.com>
+Date:   Thu Nov 10 16:21:39 2016 -0500
+
+    Update README.md
+
+[33mcommit 44a4d4f79d003137258506d3ce3a3acc2e0546eb[m
+Merge: 58b4944 dd54e19
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Thu Nov 10 15:58:58 2016 -0500
+
+    testing git
+
+[33mcommit 58b494484452002c77fa640752b7ece6b1cf3bc7[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Thu Nov 10 15:48:03 2016 -0500
+
+    update take picture xml
+
+[33mcommit dd54e19000b78be0b29a0e01b789c83416403754[m
+Author: Le Anh Duy (Andrew) <leanhduy1998@yahoo.com>
+Date:   Thu Nov 10 15:43:37 2016 -0500
+
+    Initial commit
+
+[33mcommit 40e1bc113e729496bfd9ceba4578ed2433f2e289[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Wed Nov 9 17:59:09 2016 -0500
+
+    update interface
+
+[33mcommit 1b668c6987f8a547105cc2d986cf47fd586dff57[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Wed Nov 9 01:17:18 2016 -0500
+
+    add all files
+
+[33mcommit c658ebc0809a7c09807176d5499e2bac15617e84[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Wed Nov 9 01:11:55 2016 -0500
+
+    first commit
+
+[33mcommit a012961b461992d8b1189376ce44019b4a436516[m
+Author: Duy Le <leanhduy1998@gmail.com>
+Date:   Wed Nov 9 01:09:27 2016 -0500
+
+    first commit

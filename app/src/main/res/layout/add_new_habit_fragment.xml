@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <EditText
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/habitEditText"
+        android:hint="Enter New Habit"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp" />
+
+
+    <EditText
+        android:layout_height="42dp"
+        android:inputType="time"
+        android:ems="10"
+        android:id="@+id/amountOfDaysEditText"
+        android:hint="Amount"
+        tools:layout_conversion_absoluteX="0dp"
+        tools:layout_conversion_absoluteY="42dp"
+        tools:layout_conversion_absoluteWidth="128dp"
+        tools:layout_conversion_absoluteHeight="42dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="8dp"
+        android:layout_width="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/category_container" />
+
+    <Spinner
+        android:layout_height="42dp"
+        android:id="@+id/typeOfLengthSpinner"
+        tools:layout_conversion_absoluteX="256dp"
+        tools:layout_conversion_absoluteY="42dp"
+        tools:layout_conversion_absoluteWidth="128dp"
+        tools:layout_conversion_absoluteHeight="42dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/amountOfDaysEditText"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_width="0dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/category_container" />
+
+
+    <EditText
+        android:layout_height="40dp"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/feedDescriptionEditText"
+        android:hint="Description for this habit"
+        android:layout_width="283dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/amountOfDaysEditText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp" />
+
+
+    <Spinner
+        android:layout_height="24dp"
+        android:id="@+id/publicitySpinner"
+        tools:layout_conversion_absoluteX="165dp"
+        tools:layout_conversion_absoluteY="127dp"
+        tools:layout_conversion_absoluteWidth="219dp"
+        tools:layout_conversion_absoluteHeight="24dp"
+        android:layout_width="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/typeOfLengthSpinner"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp"
+        app:layout_constraintLeft_toRightOf="@+id/feedDescriptionEditText"
+        app:layout_constraintHorizontal_bias="0.0" />
+
+
+    <Button
+        android:text="Done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/doneButton"
+        android:onClick="setFragment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp"
+        android:visibility="visible"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp" />
+
+    <Button
+        android:text="Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cancelButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp" />
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:id="@+id/takePictureFragmentContainer"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp"
+        app:layout_constraintHorizontal_bias="0.81"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/dayDescriptionEditText"
+        android:layout_height="200dp">
+
+    </FrameLayout>
+
+    <EditText
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/dayDescriptionEditText"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/feedDescriptionEditText"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="8dp"
+        android:hint="Description for today's picture" />
+
+    <ImageButton
+        android:id="@+id/category_show_btn"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@+id/habitEditText"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/colorPrimary" />
+
+    <FrameLayout
+        android:id="@+id/category_container"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/habitEditText">
+
+    </FrameLayout>
+
+
+</android.support.constraint.ConstraintLayout>
