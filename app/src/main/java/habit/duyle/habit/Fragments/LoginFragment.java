@@ -327,6 +327,7 @@ public class LoginFragment extends Fragment implements LoaderCallbacks<Cursor> {
                                     UserDataServices.getInstance().setUserNotInDatabase(false);
                                     User currentUser = getUserData(dataSnapshot,new User.Builder());
                                     MainActivity.getMainActivity().setCurrentUser(currentUser);
+                                    MainActivity.getMainActivity().loadCategoryFragment();
                                     MainActivity.getMainActivity().loadNewFeedFragment();
                                 }
                                 if(UserDataServices.getInstance().isUserNotInDatabase()  ){

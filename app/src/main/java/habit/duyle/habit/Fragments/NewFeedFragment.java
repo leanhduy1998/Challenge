@@ -75,6 +75,7 @@ public class NewFeedFragment extends Fragment {
         setupNewFeedRecyclerView(view.getContext());
         refreshData();
         setUpdateHabitButtonVisibility();
+
         return view;
     }
     public void setIDs(View view){

@@ -1,6 +1,7 @@
 package habit.duyle.habit.Fragments;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -27,6 +28,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
+import habit.duyle.habit.models.Category;
 import habit.duyle.habit.models.DayDesciption;
 import habit.duyle.habit.models.Feed;
 import habit.duyle.habit.Activities.MainActivity;
@@ -213,6 +215,7 @@ public class AddNewHabitFragment extends Fragment {
                 .typeOfLength(getTypeOfLength())
                 .publicity(getPublicity())
                 .uid(getUid())
+                .categoryArrayList(new ArrayList<Category>())
                 .dayDescriptionArrayList(dayDescriptionArrayList)
                 .build();
         return feed;

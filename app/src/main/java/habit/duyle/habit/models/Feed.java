@@ -77,7 +77,7 @@ public class Feed {
         private long updatedTime;
         private long createdTime;
         private String uid;
-        private ArrayList<Category> categoryArrayList;
+        private ArrayList<Category> categoryArrayList = new ArrayList<Category>();
 
         public Builder dayDescriptionArrayList(ArrayList<DayDesciption> dayDescriptionArrayList) {
             this.dayDescriptionArrayList = dayDescriptionArrayList;
@@ -134,7 +134,7 @@ public class Feed {
             return this;
         }
         public Builder categoryArrayList(ArrayList<Category>categoryArrayList){
-            this.categoryArrayList=categoryArrayList;
+            this.categoryArrayList= categoryArrayList;
             return this;
         }
 
@@ -145,10 +145,8 @@ public class Feed {
                 } catch (MissingOrWrongDataException e) {
                     e.printStackTrace();
                 }
-            } else {
-                return new Feed(this);
             }
-            return null;
+            return new Feed(this);
         }
 
         public Feed buildEmptyFeed() {

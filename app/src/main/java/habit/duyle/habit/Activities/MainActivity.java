@@ -369,8 +369,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void loadNewFeedFragment(){
-        loadCategoryFragment();
-
         NewFeedFragment loadNewFeedFragment = new NewFeedFragment();
         if(loadNewFeedFragment.getRecyclerAdapter()!=null){
             loadNewFeedFragment.getRecyclerAdapter().notifyDataSetChanged();
@@ -404,7 +402,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Fragment profileFeedFragment = new ProfileFeedFragment();
         replaceFragment(profileFeedFragment);
     }
-    private void loadCategoryFragment(){
+    public void loadCategoryFragment(){
         Fragment categoryFragment = new CategoryMainFragment("display");
         replaceFragment(categoryFragment,R.id.category_container);
     }
@@ -429,6 +427,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         getSupportFragmentManager().executePendingTransactions();
     }
+
     public void replaceFragment(Fragment fragment, int containerID){
         String backStateName =  fragment.getClass().getName();
         String fragmentTag = backStateName;
@@ -441,7 +440,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             ft.commit();
         }
         getSupportFragmentManager().executePendingTransactions();
-    }
+    }/*
     public void refreshFragment(Fragment fragment){
         String backStateName =  fragment.getClass().getName();
         String fragmentTag = backStateName;
@@ -452,7 +451,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
         getSupportFragmentManager().executePendingTransactions();
-    }
+    }*/
 
     public void deleteTrashFolder(){
         final File[] trashFolderList = getTrashFolder().listFiles();
